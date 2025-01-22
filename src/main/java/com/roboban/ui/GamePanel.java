@@ -105,11 +105,11 @@ public class GamePanel extends JPanel {
         GameManager.getInstance().incrementMoves();
         updateMovesLabel();
 
-        // Verificăm dacă nivelul e complet
-        checkLevelComplete();
-
         // Redesenăm board-ul
         repaint();
+
+        // Verificăm dacă nivelul e complet
+        checkLevelComplete();
     }
 
     private void resetLevel() {
