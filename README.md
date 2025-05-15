@@ -7,13 +7,14 @@ Roboban este un joc desktop scris în **Java** ce recreează mecanica clasică S
 ---
 
 ## 📐 Design Patterns implementate
-| Categorie | Pattern | Clasă principală | Rol |
-|-----------|---------|------------------|-----|
-| Creational | **Builder** | `LevelBuilder` | Construiește incremental un nivel (board, player, cutii). |
-| Structural | **Adapter** | `AudioAdapter` | Adaptează librăria audio externă la o interfață unificată. |
-| Behavioral | **Command** | `MoveCommand` | Encapsulează o mutare; viitorul suport pentru Undo devine trivial. |
-| Behavioral | **Mediator** | `GameMediator` | Coordonează interacțiunile Board ↔ UI, centralizând logica. |
-| Singleton | **Singleton** | `GameManager` | Stare globală (nivel curent, scor, număr de mutări). |
+
+| Categorie  | Pattern       | Clasă principală | Rol                                                                |
+| ---------- | ------------- | ---------------- | ------------------------------------------------------------------ |
+| Creational | **Builder**   | `LevelBuilder`   | Construiește incremental un nivel (board, player, cutii).          |
+| Structural | **Adapter**   | `AudioAdapter`   | Adaptează librăria audio externă la o interfață unificată.         |
+| Behavioral | **Command**   | `MoveCommand`    | Encapsulează o mutare; viitorul suport pentru Undo devine trivial. |
+| Behavioral | **Mediator**  | `GameMediator`   | Coordonează interacțiunile Board ↔ UI, centralizând logica.        |
+| Singleton  | **Singleton** | `GameManager`    | Stare globală (nivel curent, scor, număr de mutări).               |
 
 ---
 
@@ -45,17 +46,19 @@ com.roboban
 
 ## 🏛️ Arhitectura pe straturi
 
-1. **UI (Presentation)** – pachetul `ui`  
-   - Desenează board‑ul și preia input‑ul tastaturii.  
+1. **UI (Presentation)** – pachetul `ui`
+
+   - Desenează board‑ul și preia input‑ul tastaturii.
    - Trimite acțiunile spre `GameMediator`.
 
-2. **Logică (Domain)** – pattern‑urile `mediator`, `command`, `builder`, `model`  
+2. **Logică (Domain)** – pattern‑urile `mediator`, `command`, `builder`, `model`
+
    - Se ocupă de mutări, validări și construire niveluri.
 
-3. **Infrastructură** – `adapter`, `singleton`  
+3. **Infrastructură** – `adapter`, `singleton`
    - Audio, scoruri, nivel curent, salvări rapide (viitor).
 
-Această separare face proiectul testabil și plug‑&‑play pentru viitoare feature‑uri (ex. niveluri noi, multiplayer local, AI etc.). citeturn0file0
+Această separare face proiectul testabil și plug‑&‑play pentru viitoare feature‑uri (ex. niveluri noi, multiplayer local, AI etc.).
 
 ---
 
@@ -72,11 +75,6 @@ mvn clean package
 java -jar target/roboban.jar
 ```
 
-### Controale implicite
-- **W / A / S / D** – deplasare
-- **ESC** – revenire la meniu
-- **M** – toggling muzică (prin `AudioAdapter`)
-
 ---
 
 ## 🧪 Testare
@@ -88,6 +86,7 @@ mvn test
 ```
 
 Rezumatul setului de teste (din documentație):
+
 - `BoardTest` – 4/4
 - `EntitiesTest` – 2/2
 - `MoveCommandTest` – 3/3
@@ -108,8 +107,7 @@ Rezumatul setului de teste (din documentație):
 
 ## 📚 Bibliografie & Resurse
 
-- Documentația de proiect (Universitatea Dunărea de Jos) citeturn0file0
-- *Design Patterns: Elements of Reusable Object‑Oriented Software* – GoF
+- Design Patterns: Elements of Reusable Object‑Oriented Software\_ – GoF
 - Tutoriale JUnit & Swing (Oracle, Baeldung, etc.)
 
 ---
